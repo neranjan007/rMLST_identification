@@ -1,0 +1,4 @@
+
+java -jar $womtool validate workflows/wf_rMLSTid.wdl
+java -jar $womtool inputs workflows/wf_rMLSTid.wdl
+java -Dconfig.file=../cwl.conf -jar $cromwell run workflows/wf_rMLSTid.wdl -i inputs.json
