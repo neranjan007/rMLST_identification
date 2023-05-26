@@ -25,12 +25,12 @@ task trimmomatic_task{
         echo "~{samplename_r1}"
         echo "~{samplename_r2}"
         trimmomatic PE \
-        -threads ~{cpu} \
-        "~{r1}" "~{r2}" \
-        "~{samplename_r1}_paired.fastq.gz" "~{samplename_r1}_unpaired.fastq.gz" \
-        "~{samplename_r2}_paired.fastq.gz" "~{samplename_r2}_unpaired.fastq.gz" \
-        ILLUMINACLIP:/Trimmomatic-0.39/adapters/TruSeq3-PE.fa:2:20:10:8:TRUE \
-        SLIDINGWINDOW:~{window_size}:~{required_quality} MINLEN:~{minlen}        
+            -threads ~{cpu} \
+            "~{r1}" "~{r2}" \
+            "~{samplename_r1}_paired.fastq.gz" "~{samplename_r1}_unpaired.fastq.gz" \
+            "~{samplename_r2}_paired.fastq.gz" "~{samplename_r2}_unpaired.fastq.gz" \
+            ILLUMINACLIP:/Trimmomatic-0.39/adapters/TruSeq3-PE.fa:2:20:10:8:TRUE \
+            SLIDINGWINDOW:~{window_size}:~{required_quality} MINLEN:~{minlen}        
     >>>
     
     output{

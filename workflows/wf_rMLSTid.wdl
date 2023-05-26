@@ -2,6 +2,7 @@ version 1.0
 
 import "../tasks/task_fastqc.wdl" as fastqc
 import "../tasks/task_trimmomatic.wdl" as trimmomatic 
+import "../tasks/task_spades.wdl" as spades
 
 workflow rMLST_workflow{
     input{
@@ -27,6 +28,14 @@ workflow rMLST_workflow{
             read1 = trimmomatic_task.r1_paired,
             read2 = trimmomatic_task.r2_paired
     }
+
+    call spades.spades_task{
+        input:
+            r1 = R1,
+            r2 = R2
+    }
+
+
 
     output{
         File FASTQC_R1 = rawfastqc_task.r1_fastqc
