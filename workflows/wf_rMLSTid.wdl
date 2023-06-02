@@ -42,5 +42,6 @@ workflow rMLST_workflow{
         File FASTQC_R2 = rawfastqc_task.r2_fastqc
         File Trim_FASTQC_R1 = trimmedfastqc_task.r1_fastqc
         File Trim_FASTQC_R2 = trimmedfastqc_task.r2_fastqc
+        #File Spades_scaffolds = spades_task.scaffolds
     }
 }
