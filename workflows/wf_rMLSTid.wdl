@@ -3,6 +3,7 @@ version 1.0
 import "../tasks/task_fastqc.wdl" as fastqc
 import "../tasks/task_trimmomatic.wdl" as trimmomatic 
 import "../tasks/task_spades.wdl" as spades
+import "../tasks/task_rmlst.wdl" as rmlst 
 
 workflow rMLST_workflow{
     input{
@@ -35,6 +36,11 @@ workflow rMLST_workflow{
             r2 = R2
     }
 
+    call rmlst.rmlst_task{
+        input:
+            scaffolds = spades_task.scaffolds
+    }
+
 
 
     output{
@@ -43,5 +49,6 @@ workflow rMLST_workflow{
         File Trim_FASTQC_R1 = trimmedfastqc_task.r1_fastqc
         File Trim_FASTQC_R2 = trimmedfastqc_task.r2_fastqc
         #File Spades_scaffolds = spades_task.scaffolds
+        String TAXON = rmlst_task.taxon
     }
 }
