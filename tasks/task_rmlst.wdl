@@ -7,7 +7,7 @@ task rmlst_task{
 
     input{
         File scaffolds
-        String docker = "neranjan007/jq:1.6"
+        String docker = "neranjan007/jq:1.6.2"
         Int cpu = 1
         Int memory = 2
     } 
@@ -20,5 +20,13 @@ task rmlst_task{
 
     output{
         String taxon = read_string("TAXON")
+    }
+
+    runtime{
+        docker: "~{docker}"
+        memory: "~{memory} GB"
+        cpu: cpu
+        disks: "local-disk 50 SSD"
+        preemptible: 0
     }
 }
