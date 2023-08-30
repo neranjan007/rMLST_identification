@@ -15,11 +15,14 @@ task rmlst_task{
     command <<<
         (echo -n '{"base64":true,"details":true,"sequence": "'; base64 ~{scaffolds}; echo '"}') | curl -s -H "Content-Type: application/json" -X POST "http://rest.pubmlst.org/db/pubmlst_rmlst_seqdef_kiosk/schemes/1/sequence" -d @- > rmlst.json
         taxon=$(jq -r '.taxon_prediction[0].taxon'  rmlst.json)
+        rst=$(jq -r '.fields.rST' rmlst.json)
         echo "$taxon" > TAXON
+        echo "$rst" > RST
     >>>
 
     output{
         String taxon = read_string("TAXON")
+        String rST = read_string("RST")
     }
 
     runtime{

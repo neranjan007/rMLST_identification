@@ -50,5 +50,6 @@ workflow rMLST_workflow{
         File Trim_FASTQC_R2 = trimmedfastqc_task.r2_fastqc
         #File Spades_scaffolds = spades_task.scaffolds
         String TAXON = rmlst_task.taxon
+        String rST = rmlst_task.rST
     }
 }
