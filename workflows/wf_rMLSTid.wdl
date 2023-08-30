@@ -32,8 +32,8 @@ workflow rMLST_workflow{
 
     call spades.spades_task{
         input:
-            r1 = R1,
-            r2 = R2
+            r1 = trimmomatic_task.r1_paired,
+            r2 = trimmomatic_task.r2_paired
     }
 
     call rmlst.rmlst_task{
