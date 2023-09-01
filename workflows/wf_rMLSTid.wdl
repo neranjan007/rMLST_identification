@@ -44,11 +44,15 @@ workflow rMLST_workflow{
 
 
     output{
+        # raw FASTQC 
         File FASTQC_R1 = rawfastqc_task.r1_fastqc
         File FASTQC_R2 = rawfastqc_task.r2_fastqc
+        # trimmed FASTQC
         File Trim_FASTQC_R1 = trimmedfastqc_task.r1_fastqc
         File Trim_FASTQC_R2 = trimmedfastqc_task.r2_fastqc
+        # Spades
         #File Spades_scaffolds = spades_task.scaffolds
+        # rMLST
         String TAXON = rmlst_task.taxon
         String rST = rmlst_task.rST
     }
