@@ -16,5 +16,6 @@ workflow rMLST_workflow{
 
     output{
         String TAXON = rmlst_task.taxon
+        String rST = rmlst_task.rST
     }
 }
